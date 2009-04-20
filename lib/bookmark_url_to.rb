@@ -139,7 +139,11 @@
             end
           end
            unless href.empty? 
-              output << "<div class='bookmark_url_to_element'><a href='#{href}'>"
+              if type == :mail_to || type==:favorites
+                output << "<div class='bookmark_url_to_element'><a href='#{href}' >"
+              else
+                output << "<div class='bookmark_url_to_element'><a href='#' onclick='window.open(\"#{href}\");'>"
+              end
               case visibility_type
                 when "image"
                   output << "<img src='/images/bookmark_url_to/#{type}.png' alt='submit to #{site_text}' />"
